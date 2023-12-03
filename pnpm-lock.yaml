@@ -1,10 +1,13 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 dependencies:
+  commander:
+    specifier: ^11.1.0
+    version: 11.1.0
   words-to-numbers:
     specifier: ^1.5.1
     version: 1.5.1
@@ -21,6 +24,11 @@ packages:
   /clj-fuzzy@0.3.3:
     resolution: {integrity: sha512-9cyh9A8+OphDZeKIG21MgyDHWDkWxTvagwvFLVjtdi6eToFENF7iDLlKwhHrnBQRSQwprKNhazG053nE/UgwfQ==}
     deprecated: use the `talisman` library instead
+    dev: false
+
+  /commander@11.1.0:
+    resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
+    engines: {node: '>=16'}
     dev: false
 
   /core-js@2.6.12:
