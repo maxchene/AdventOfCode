@@ -1,30 +1,24 @@
 export function p1(lines) {
-  let ans = 0;
+
   const thresholds = {
     red: 12,
     green: 13,
     blue: 14
   };
-  lines.forEach((line) => {
+
+  return lines.reduce((acc, line) => {
     const [gameId, game] = line.split(": ");
     const id = parseInt(gameId.split(" ").at(1));
-    const gameSets = game.split('; ');
-
-    const gameIsPossible = gameSets
-      .map(gameSet => {
-        return gameSet.split(', ').map(set => {
-          const [count, color] = set.split(' ');
-          return thresholds[color] >= parseInt(count);
-        });
-      })
-      .flat()
-      .every(item => item === true);
-    if (gameIsPossible) {
-      ans += id;
-    }
-
-  });
-  return ans;
+    const gameIsPossible = game.replace(/;/g,',')
+    .split(', ')
+    .map(countColor => {
+      const [count, color] = countColor.split(' ');
+      return thresholds[color] >= parseInt(count);
+    })
+    .every(item => item ===true);
+    
+    return acc+= gameIsPossible ? id:0;
+  },0);
 }
 
 export function p2(lines) {
