@@ -14,16 +14,15 @@ export function p2(lines) {
     return lines
         .join()
         .matchAll(/mul\((\d+),(\d+)\)|(don't\(\))|(do\(\))/gm)
-        .toArray()
         .reduce((acc, current) => {
-            if (current.at(3) === "don't()") {
+            const [, a, b, dont, doIt] = current;
+            if (dont === "don't()") {
                 on = false;
-            } else if (current.at(4) === 'do()') {
+            } else if (doIt === "do()") {
                 on = true;
             } else if (on) {
-                return acc + (parseInt(current.at(1) ?? 0) * parseInt(current.at(2) ?? 0));
+                acc += (parseInt(a) || 0) * (parseInt(b) || 0);
             }
             return acc;
         }, 0);
-
 }
